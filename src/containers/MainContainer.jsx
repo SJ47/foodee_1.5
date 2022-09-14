@@ -43,24 +43,25 @@ const MainContainer = () => {
     const baseUrl = "https://foodee-service.herokuapp.com/";
     const baseUrlv2 = "/.netlify/functions/";
 
-    const [allMenuItems, setAllMenuItems] = useState([]);
+    // const [allMenuItems, setAllMenuItems] = useState([]);
 
-    const getAllMenuItems = () => {
-        MenuService.getMenuItems().then((menuItems) =>
-            // setAllMenuItems(menuItems)
-            setCurrentItems(menuItems)
-        );
-    };
+    // const getAllMenuItems = () => {
+    //     MenuService.getMenuItems().then((menuItems) =>
+    //         // setAllMenuItems(menuItems)
+    //         setCurrentItems(menuItems)
+    //     );
+    // };
 
-    useEffect(() => {
-        getAllMenuItems();
-    }, []);
+    // useEffect(() => {
+    //     getAllMenuItems();
+    // }, []);
 
     useEffect(() => {
         const request = new Request();
 
         // console.log("Fetching menu items and restaurant info...")
-        const allItemsPromise = request.get(baseUrl + selectedCategory);
+        // const allItemsPromise = request.get(baseUrl + selectedCategory);
+        const allItemsPromise = request.get(baseUrlv2 + "/read-all");
         const restaurantPromise = request.get(baseUrl + "/restaurants");
         const customerPromise = request.get(baseUrl + "/customers");
         const orderPromise = request.get(baseUrl + "/orders");
@@ -71,7 +72,7 @@ const MainContainer = () => {
             customerPromise,
             orderPromise,
         ]).then((data) => {
-            // setCurrentItems(data[0]);
+            setCurrentItems(data[0]);
             setRestaurants(data[1]);
             setMenu(data[1][0].menu);
             setTables(data[1][0].tables);
