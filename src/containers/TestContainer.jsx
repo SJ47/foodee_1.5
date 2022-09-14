@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import MenuService from "../services/MenuService";
+// import MenuService from "../services/MenuService";
 
 const TestContainer = () => {
-    const [allMenuItems, setAllMenuItems] = useState([]);
+    // const [allMenuItems, setAllMenuItems] = useState([]);
 
-    const getAllMenuItems = () => {
-        MenuService.getMenuItems().then((menuItems) =>
-            setAllMenuItems(menuItems)
-        );
-    };
+    // const getAllMenuItems = () => {
+    //     MenuService.getMenuItems().then((menuItems) =>
+    //         setAllMenuItems(menuItems)
+    //     );
+    // };
 
-    useEffect(() => {
-        getAllMenuItems();
-    }, []);
+    // useEffect(() => {
+    //     getAllMenuItems();
+    // }, []);
 
     if (!allMenuItems) {
         return <p>nothing</p>;

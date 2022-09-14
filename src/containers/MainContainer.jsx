@@ -9,7 +9,6 @@ import OrderPage from "../components/OrderPage";
 import AboutPage from "../components/AboutPage";
 import PaymentForm from "../components/PaymentForm";
 import ThankYouPage from "../components/ThankYouPage";
-import MenuService from "../services/MenuService";
 
 // Management
 import "../components/management/admin.css";
@@ -43,23 +42,9 @@ const MainContainer = () => {
     const baseUrl = "https://foodee-service.herokuapp.com/";
     const baseUrlv2 = "/.netlify/functions/";
 
-    // const [allMenuItems, setAllMenuItems] = useState([]);
-
-    // const getAllMenuItems = () => {
-    //     MenuService.getMenuItems().then((menuItems) =>
-    //         // setAllMenuItems(menuItems)
-    //         setCurrentItems(menuItems)
-    //     );
-    // };
-
-    // useEffect(() => {
-    //     getAllMenuItems();
-    // }, []);
-
     useEffect(() => {
         const request = new Request();
 
-        // console.log("Fetching menu items and restaurant info...")
         // const allItemsPromise = request.get(baseUrl + selectedCategory);
         const allItemsPromise = request.get(baseUrlv2 + "/read-all");
         const restaurantPromise = request.get(baseUrl + "/restaurants");
