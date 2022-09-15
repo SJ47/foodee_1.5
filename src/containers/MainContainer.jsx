@@ -37,7 +37,8 @@ const MainContainer = () => {
     const [allOrders, setAllOrders] = useState([]);
     const [activeCustomer, setActiveCustomer] = useState(null);
     const [basketCounter, setBasketCounter] = useState(0);
-    const baseUrl = "https://foodee-service.herokuapp.com/";
+    // const baseUrl = "https://foodee-service.herokuapp.com/";
+    const baseUrl = "";
     const baseUrlv2 = "/.netlify/functions/";
 
     // Read all menu items in once per page load only and set main to default load
@@ -74,22 +75,22 @@ const MainContainer = () => {
     }, [selectedCategory]);
 
     // Read in other tables for restaurants, customers and orders on first load only
-    useEffect(() => {
-        const request = new Request();
-        const restaurantPromise = request.get(baseUrl + "/restaurants");
-        const customerPromise = request.get(baseUrl + "/customers");
-        const orderPromise = request.get(baseUrl + "/orders");
+    // useEffect(() => {
+    //     const request = new Request();
+    //     const restaurantPromise = request.get(baseUrl + "/restaurants");
+    //     // const customerPromise = request.get(baseUrl + "/customers");
+    //     // const orderPromise = request.get(baseUrl + "/orders");
 
-        Promise.all([restaurantPromise, customerPromise, orderPromise]).then(
-            (data) => {
-                setRestaurants(data[1]);
-                // setMenu(data[1][0].menu);
-                setTables(data[1][0].tables);
-                setAllCustomers(data[2]);
-                setAllOrders(data[3]);
-            }
-        );
-    }, []); // was [selectedCategory]
+    //     Promise.all([restaurantPromise, customerPromise, orderPromise]).then(
+    //         (data) => {
+    //             // setRestaurants(data[1]);
+    //             // setMenu(data[1][0].menu);
+    //             // setTables(data[1][0].tables);
+    //             // setAllCustomers(data[2]);
+    //             // setAllOrders(data[3]);
+    //         }
+    //     );
+    // }, []); // was [selectedCategory]
 
     if (!currentItems) {
         return <p>nothing</p>;
@@ -146,19 +147,15 @@ const MainContainer = () => {
     };
 
     const handleCustomerPost = function (customer) {
-        const request = new Request();
-        request.post(baseUrl + "/customers", customer);
-        setActiveCustomer(customer);
-        // .then(() => window.location = '/home')
-        // change '/' to whichever route the home page is called
+        // const request = new Request();
+        // request.post(baseUrl + "/customers", customer);
+        // setActiveCustomer(customer);
     };
 
     //////Handle Order Post
     const handleOrderPost = function (order) {
-        // console.log("what is an order", order)
-        const request = new Request();
-        request.post(baseUrl + "/orders", order);
-        // .then(() => window.location = '/paymentform')
+        // const request = new Request();
+        // request.post(baseUrl + "/orders", order);
     };
     ////////////
 
