@@ -55,7 +55,6 @@ const MainContainer = () => {
 
     // Update menu displayed when different category clicked
     useEffect(() => {
-        console.log("Category changed to: ", selectedCategory);
         const filteredMenuItemsByCategory = menu.filter((item) => {
             return item.category === selectedCategory;
         });
@@ -261,6 +260,7 @@ const MainContainer = () => {
                                 basketValue={basketValue}
                                 baseUrl={baseUrl}
                                 customer={activeCustomer}
+                                baseUrlv2={baseUrlv2}
                             />
                         );
                     }}

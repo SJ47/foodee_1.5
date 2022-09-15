@@ -14,7 +14,7 @@ const STRIPE_PUBLISHABLE_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY; // T
 // loadStripe is initialized with your real test publishable API key.
 const promise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 
-const PaymentForm = ({ basket, basketValue, baseUrl, customer }) => {
+const PaymentForm = ({ basket, basketValue, baseUrl, customer, baseUrlv2 }) => {
     // Handle payment
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const handlePaymentPost = (payment) => {
@@ -91,6 +91,7 @@ const PaymentForm = ({ basket, basketValue, baseUrl, customer }) => {
                         basket={basket}
                         baseUrl={baseUrl}
                         customer={customer}
+                        baseUrlv2={baseUrlv2}
                     />
                 </Elements>
             </div>
