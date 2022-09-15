@@ -1,0 +1,52 @@
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "S": "100"
+                    },
+                    "category": {
+                        "S": "category"
+                    },
+                    "name": {
+                        "S": "name"
+                    },
+                    "description": {
+                        "S": "description"
+                    },
+                    "price": {
+                        "N": "price"
+                    },
+                    "image": {
+                        "S": "imageurl"
+                    },
+                    "glutenFree": {
+                        "BOOL": true
+                    },
+                    "vegetarian": {
+                        "BOOL": true
+                    },
+                    "vegan": {
+                        "BOOL": true
+                    },
+                    "alcoholic": {
+                        "BOOL": true
+                    },
+                    "size": {
+                        "S": "regular"
+                    },
+                    "abv": {
+                        "N": "abv"
+                    },
+                    "allergins": {
+                        "L": [
+                            {
+                                "S": "CELERY"
+                            },
+                            {
+                                "S": "NUTS"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
