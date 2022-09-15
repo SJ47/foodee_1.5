@@ -41,6 +41,17 @@ const MainContainer = () => {
     const baseUrlv2 = "/.netlify/functions/";
 
     // Read all menu items in once per page load only and set main to default load
+
+    const dummyRestaurants = [
+        {
+            id: "1",
+            name: "foodeev2",
+            latitude: 55.86568,
+            longitude: -4.25714,
+        },
+    ];
+
+    // Read all menu items in once per page load only and set main to default load
     useEffect(() => {
         const request = new Request();
         const allItemsPromise = request.get(baseUrlv2 + "/read-all");
@@ -50,6 +61,7 @@ const MainContainer = () => {
                 return item.category === selectedCategory;
             });
             setCurrentItems(filteredMenuItemsByCategory);
+            setRestaurants(dummyRestaurants);
         });
     }, []);
 

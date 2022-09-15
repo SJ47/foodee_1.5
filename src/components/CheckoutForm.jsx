@@ -108,12 +108,16 @@ const CheckoutForm = ({ basketValue, basket, baseUrl, customer, baseUrlv2 }) => 
 
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
-            {/* <CardElement id="card-element" options={cardStyle, { hidePostalCode: true }} onChange={handleChange} /> */}
             <CardElement
+                id="card-element"
+                options={(cardStyle, { hidePostalCode: true })}
+                onChange={handleChange}
+            />
+            {/* <CardElement
                 id="card-element"
                 options={cardStyle}
                 onChange={handleChange}
-            />
+            /> */}
             {/* <CardExpiryElement id="card-element" options={cardStyle} onChange={handleChange} /> */}
             <button disabled={processing || disabled || succeeded} id="submit">
                 <span id="button-text">
