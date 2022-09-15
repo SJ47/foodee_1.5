@@ -108,12 +108,7 @@ const CheckoutForm = ({ basketValue, basket, baseUrl, customer, baseUrlv2 }) => 
                 options={(cardStyle, { hidePostalCode: true })}
                 onChange={handleChange}
             />
-            {/* <CardElement
-                id="card-element"
-                options={cardStyle}
-                onChange={handleChange}
-            /> */}
-            {/* <CardExpiryElement id="card-element" options={cardStyle} onChange={handleChange} /> */}
+
             <button disabled={processing || disabled || succeeded} id="submit">
                 <span id="button-text">
                     {processing ? (
@@ -136,7 +131,6 @@ const CheckoutForm = ({ basketValue, basket, baseUrl, customer, baseUrlv2 }) => 
                 Payment succeeded
                 <a href={`/thankyou`}> Continue.</a>
             </p>
-            {/* window.location = '/thankyou'; */}
         </form>
     );
 };

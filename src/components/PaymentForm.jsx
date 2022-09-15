@@ -31,7 +31,8 @@ const PaymentForm = ({ basket, basketValue, baseUrl, customer, baseUrlv2 }) => {
         orderTotal = orderTotal + item.price * item.quantity;
         return (
             <tr key={index}>
-                <td> {item.name}</td> <td>£{item.price.toFixed(2)}</td>{" "}
+                <td>{item.name}</td>
+                <td>£{item.price.toFixed(2)}</td>
                 <td>{item.quantity}</td>
             </tr>
         );
@@ -59,14 +60,15 @@ const PaymentForm = ({ basket, basketValue, baseUrl, customer, baseUrlv2 }) => {
             <div className="order-form-summary">
                 <h1>Order Summary Payment</h1>
                 <table className="order-table-front-end">
-                    <tr>
-                        <th>Order Item</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                    </tr>
-                    {orderList}
+                    <thead>
+                        <tr>
+                            <th>Order Item</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody align="left">{orderList}</tbody>
                 </table>
-                {/* <table>{orderList}</table> */}
                 <h2 className="payment-total-text">
                     Total: £{orderTotal.toFixed(2)}
                 </h2>
