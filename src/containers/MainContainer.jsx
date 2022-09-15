@@ -25,9 +25,7 @@ import ErrorPage from "../components/ErrorPage.jsx";
 
 const MainContainer = () => {
     const [currentItems, setCurrentItems] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(
-        "menu_items/category/main"
-    );
+    const [selectedCategory, setSelectedCategory] = useState("main");
     const [basket, setBasket] = useState([]);
     const [basketValue, setBasketValue] = useState(0);
     const [loggedIn, setLoggedIn] = useState(false);
@@ -42,29 +40,45 @@ const MainContainer = () => {
     const baseUrl = "https://foodee-service.herokuapp.com/";
     const baseUrlv2 = "/.netlify/functions/";
 
+    // Read all menu items in once per page load only and set main to default load
     useEffect(() => {
         const request = new Request();
-
-        // const allItemsPromise = request.get(baseUrl + selectedCategory);
         const allItemsPromise = request.get(baseUrlv2 + "/read-all");
+        Promise.all([allItemsPromise]).then((data) => {
+            setMenu(data[0]);
+            const filteredMenuItemsByCategory = data[0].filter((item) => {
+                return item.category === selectedCategory;
+            });
+            setCurrentItems(filteredMenuItemsByCategory);
+        });
+    }, []);
+
+    // Update menu displayed when different category clicked
+    useEffect(() => {
+        console.log("Category changed to: ", selectedCategory);
+        const filteredMenuItemsByCategory = menu.filter((item) => {
+            return item.category === selectedCategory;
+        });
+        setCurrentItems(filteredMenuItemsByCategory);
+    }, [selectedCategory]);
+
+    // Read in other tables for restaurants, customers and orders on first load only
+    useEffect(() => {
+        const request = new Request();
         const restaurantPromise = request.get(baseUrl + "/restaurants");
         const customerPromise = request.get(baseUrl + "/customers");
         const orderPromise = request.get(baseUrl + "/orders");
 
-        Promise.all([
-            allItemsPromise,
-            restaurantPromise,
-            customerPromise,
-            orderPromise,
-        ]).then((data) => {
-            setCurrentItems(data[0]);
-            setRestaurants(data[1]);
-            setMenu(data[1][0].menu);
-            setTables(data[1][0].tables);
-            setAllCustomers(data[2]);
-            setAllOrders(data[3]);
-        });
-    }, [selectedCategory]);
+        Promise.all([restaurantPromise, customerPromise, orderPromise]).then(
+            (data) => {
+                setRestaurants(data[1]);
+                // setMenu(data[1][0].menu);
+                setTables(data[1][0].tables);
+                setAllCustomers(data[2]);
+                setAllOrders(data[3]);
+            }
+        );
+    }, []); // was [selectedCategory]
 
     if (!currentItems) {
         return <p>nothing</p>;
