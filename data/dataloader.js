@@ -3,9 +3,9 @@ const fs = require("fs");
 
 // -----------------------------------------
 // Create the document client interface for DynamoDB
-const ddbDocumentClient = require("./config")
+const ddbDocumentClient = require("../netlify/functions/config")
 
-console.log("Loading song data into DynamoDB");
+console.log("Loading menu items data into DynamoDB");
 
 const menuItemData = JSON.parse(fs.readFileSync('menu_items.json', 'utf8'));
 menuItemData.forEach(function (menuItem) {
@@ -30,7 +30,7 @@ menuItemData.forEach(function (menuItem) {
 
     ddbDocumentClient.put(params, function (err, data) {
         if (err) {
-            console.error("Error adding item!!");
+            console.error("Error adding menu item: ", menuItem.name);
         } else {
             console.log("Successfully added menu item: ", menuItem.name);
         }
