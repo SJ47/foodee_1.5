@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
+import { Link } from "react-router-dom";
 import Request from "../helpers/request";
 import "../css/PaymentForm.css";
 
@@ -129,8 +129,14 @@ const CheckoutForm = ({ basketValue, basket, baseUrl, customer, baseUrlv2 }) => 
             {/* Show a success message upon completion */}
             <p className={succeeded ? "result-message" : "result-message hidden"}>
                 Payment succeeded
-                <a href={`/thankyou`}> Continue.</a>
+                <Link to="/thankyou"> Continue</Link>
+                {/* <a href={`/thankyou`}> Continue.</a> */}
             </p>
+            {/* <Link to="/thankyou">
+                <button className="order-btn" type="submit">
+                    SUBMIT
+                </button>
+            </Link> */}
         </form>
     );
 };
