@@ -137,6 +137,7 @@ const MainContainer = () => {
     };
 
     const handleResetValuesAfterOrder = () => {
+        console.log("** Resetting Values ***");
         setBasket([]);
         setBasketValue(0);
         setSelectedCategory("main");
