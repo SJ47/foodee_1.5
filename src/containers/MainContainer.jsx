@@ -136,6 +136,12 @@ const MainContainer = () => {
         setBasket(updatedBasket);
     };
 
+    const handleResetValuesAfterOrder = () => {
+        setBasket([]);
+        setBasketValue(0);
+        setSelectedCategory("main");
+    };
+
     const handleCustomerLogIn = () => {
         // console.log("handle customer login triggered");
         setLoggedIn(true);
@@ -369,7 +375,13 @@ const MainContainer = () => {
                     exact
                     path="/thankyou"
                     render={() => {
-                        return <ThankYouPage />;
+                        return (
+                            <ThankYouPage
+                                handleResetValuesAfterOrder={
+                                    handleResetValuesAfterOrder
+                                }
+                            />
+                        );
                     }}
                 />
 
