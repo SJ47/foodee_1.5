@@ -137,10 +137,20 @@ const MainContainer = () => {
     };
 
     const handleResetValuesAfterOrder = () => {
-        console.log("** Resetting Values ***");
         setBasket([]);
         setBasketValue(0);
+        setBasketCounter(0);
         setSelectedCategory("main");
+
+        const request = new Request();
+        const allItemsPromise = request.get(baseUrlv2 + "/read-all");
+        Promise.all([allItemsPromise]).then((data) => {
+            setMenu(data[0]);
+            const filteredMenuItemsByCategory = data[0].filter((item) => {
+                return item.category === "main";
+            });
+            setCurrentItems(filteredMenuItemsByCategory);
+        });
     };
 
     const handleCustomerLogIn = () => {
