@@ -22,7 +22,9 @@ const ThankYouPage = ({ handleResetValuesAfterOrder }) => {
 
                 <Link to="/home">
                     <button
-                        onClick={handleResetValuesAfterOrder}
+                        onClick={() => {
+                            handleResetValuesAfterOrder();
+                        }}
                         className="home-btn"
                         type="submit"
                     >
