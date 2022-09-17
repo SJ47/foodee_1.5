@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/02b633a8-fb7c-4cbc-9a6e-37517c0849f0/deploy-status)](https://app.netlify.com/sites/idyllic-raindrop-6fabe3/deploys)
 # fooDee v1.5
 
 # Brief
