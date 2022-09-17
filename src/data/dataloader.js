@@ -3,7 +3,7 @@ const fs = require("fs");
 
 // -----------------------------------------
 // Create the document client interface for DynamoDB
-const ddbDocumentClient = require("../netlify/functions/config")
+const ddbDocumentClient = require("../../netlify/functions/config")
 
 console.log("Loading menu items data into DynamoDB");
 
