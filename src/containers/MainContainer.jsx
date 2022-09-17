@@ -136,6 +136,23 @@ const MainContainer = () => {
         setBasket(updatedBasket);
     };
 
+    const handleResetValuesAfterOrder = () => {
+        setBasket([]);
+        setBasketValue(0);
+        setBasketCounter(0);
+        setSelectedCategory("main");
+
+        const request = new Request();
+        const allItemsPromise = request.get(baseUrlv2 + "/read-all");
+        Promise.all([allItemsPromise]).then((data) => {
+            setMenu(data[0]);
+            const filteredMenuItemsByCategory = data[0].filter((item) => {
+                return item.category === "main";
+            });
+            setCurrentItems(filteredMenuItemsByCategory);
+        });
+    };
+
     const handleCustomerLogIn = () => {
         // console.log("handle customer login triggered");
         setLoggedIn(true);
@@ -369,7 +386,13 @@ const MainContainer = () => {
                     exact
                     path="/thankyou"
                     render={() => {
-                        return <ThankYouPage />;
+                        return (
+                            <ThankYouPage
+                                handleResetValuesAfterOrder={
+                                    handleResetValuesAfterOrder
+                                }
+                            />
+                        );
                     }}
                 />
 
