@@ -8,7 +8,7 @@ const FooDeeLogo = () => {
             <h1 id="fooDee-logo">
                 fooDee
                 <span>
-                    <small>v2</small>
+                    <small>v1.5</small>
                 </span>
             </h1>
         </>
