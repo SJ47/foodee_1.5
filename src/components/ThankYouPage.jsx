@@ -4,7 +4,7 @@ import "../css/ThankYouPage.css";
 import "../css/animations.css";
 import WashingMachine from "../media/PlateYellow.png";
 
-const ThankYouPage = () => {
+const ThankYouPage = ({ handleResetValuesAfterOrder }) => {
     return (
         <>
             <div className="thank-you-page">
@@ -21,7 +21,11 @@ const ThankYouPage = () => {
                 </div>
 
                 <Link to="/home">
-                    <button className="home-btn" type="submit">
+                    <button
+                        onClick={handleResetValuesAfterOrder}
+                        className="home-btn"
+                        type="submit"
+                    >
                         Home
                     </button>
                 </Link>
