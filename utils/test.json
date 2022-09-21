@@ -1,0 +1,102 @@
+[
+    {
+        "Item": {
+            "category": {
+                "S": "side"
+            },
+            "name": {
+                "S": "Chorizo and Sweet Potato Salad"
+            },
+            "size": {
+                "S": "150g"
+            },
+            "vegan": {
+                "BOOL": false
+            },
+            "glutenFree": {
+                "BOOL": false
+            },
+            "alcoholic": {
+                "BOOL": false
+            },
+            "allergins": {
+                "L": [
+                    {
+                        "S": "Gluten"
+                    },
+                    {
+                        "S": "Milk"
+                    }
+                ]
+            },
+            "vegetarian": {
+                "BOOL": true
+            },
+            "image": {
+                "S": "https://img.delicious.com.au/g6CEWI5G/w759-h506-cfill/del/2016/01/chorizo-and-sweet-potato-salad-26203-2.jpg"
+            },
+            "abv": {
+                "N": "0"
+            },
+            "description": {
+                "S": "Packed with goodness. It's a meal in itself"
+            },
+            "price": {
+                "N": "7.5"
+            },
+            "id": {
+                "S": "303"
+            }
+        }
+    },
+    {
+        "Item": {
+            "category": {
+                "S": "side"
+            },
+            "name": {
+                "S": "Fried Mushrooms"
+            },
+            "size": {
+                "S": "150g"
+            },
+            "vegan": {
+                "BOOL": false
+            },
+            "glutenFree": {
+                "BOOL": false
+            },
+            "alcoholic": {
+                "BOOL": false
+            },
+            "allergins": {
+                "L": [
+                    {
+                        "S": "Gluten"
+                    },
+                    {
+                        "S": "Milk"
+                    }
+                ]
+            },
+            "vegetarian": {
+                "BOOL": true
+            },
+            "image": {
+                "S": "https://www.errenskitchen.com/wp-content/uploads/2016/01/garlic-breaded-mushrooms-feature.jpg"
+            },
+            "abv": {
+                "N": "0"
+            },
+            "description": {
+                "S": "An old favourite made with mushrooms imported from Denmark. Hand selected for their unique Danish mushroom flavour."
+            },
+            "price": {
+                "N": "4.5"
+            },
+            "id": {
+                "S": "304"
+            }
+        }
+    }
+]

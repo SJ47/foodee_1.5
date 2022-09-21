@@ -1,13 +1,17 @@
 const ddbDocumentClient = require("./config")
 
 exports.handler = async function (event, context) {
+    const search_category = JSON.parse(event.body)
     const params = {
+        KeyConditionExpression: 'category = :category',
+        ExpressionAttributeValues: {
+            ':category': search_category
+        },
         TableName: "foodee",
     };
-
     try {
         // Get all items in the table
-        const menu_items = await ddbDocumentClient.scan(params).promise()
+        const menu_items = await ddbDocumentClient.query(params).promise()
         return {
             statusCode: 200,
             headers: { "Content-Type": "application/json" },
