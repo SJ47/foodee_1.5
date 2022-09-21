@@ -46,7 +46,7 @@ const MainContainer = () => {
     const dummyRestaurants = [
         {
             id: "1",
-            name: "foodeev2",
+            name: "foodeev1.5",
             latitude: 55.86568,
             longitude: -4.25714,
         },
@@ -57,6 +57,7 @@ const MainContainer = () => {
         const request = new Request();
         const allItemsPromise = request.get(baseUrlv2 + "/read-all");
         Promise.all([allItemsPromise]).then((data) => {
+            console.log(data[0]);
             setMenu(data[0]);
             const filteredMenuItemsByCategory = data[0].filter((item) => {
                 return item.category === selectedCategory;

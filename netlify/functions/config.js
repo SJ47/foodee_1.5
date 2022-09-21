@@ -6,7 +6,12 @@ const REGION = process.env.REGION;
 
 
 // Set a region to interact with (make sure it's the same as the region of your table)
-AWS.config.update({ region: REGION, accessKeyId: ACCESS_KEY_ID, secretAccessKey: SECRET_ACCESS_KEY });
+// AWS Cloud
+// AWS.config.update({ region: REGION, accessKeyId: ACCESS_KEY_ID, secretAccessKey: SECRET_ACCESS_KEY });
+
+// Localhost
+AWS.config.update({ region: REGION, accessKeyId: ACCESS_KEY_ID, secretAccessKey: SECRET_ACCESS_KEY, endpoint: "http://localhost:8000" });
+
 
 // Create the Document Client interface for DynamoDB
 const ddbDocumentClient = new AWS.DynamoDB.DocumentClient();
