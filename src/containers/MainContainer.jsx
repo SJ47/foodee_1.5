@@ -20,7 +20,6 @@ import MTableList from "../components/management/MTableList";
 import MCustomerList from "../components/management/MCustomerList";
 import MOrderList from "../components/management/MOrderList";
 import MFinancePage from "../components/management/MFinancePage";
-// import TopNavBar from '../components/TopNavBar.js';
 import ErrorPage from "../components/ErrorPage.jsx";
 
 const MainContainer = () => {
@@ -37,11 +36,8 @@ const MainContainer = () => {
     const [allOrders, setAllOrders] = useState([]);
     const [activeCustomer, setActiveCustomer] = useState(null);
     const [basketCounter, setBasketCounter] = useState(0);
-    // const baseUrl = "https://foodee-service.herokuapp.com/";
     const baseUrl = "";
     const baseUrlv2 = "/.netlify/functions/";
-
-    // Read all menu items in once per page load only and set main to default load
 
     const dummyRestaurants = [
         {
@@ -52,46 +48,20 @@ const MainContainer = () => {
         },
     ];
 
-    // Read all menu items in once per page load only and set main to default load
+    // Read only the menu items in a category when a new category selected
     useEffect(() => {
         const request = new Request();
-        const allItemsPromise = request.get(baseUrlv2 + "/read-all");
-        Promise.all([allItemsPromise]).then((data) => {
-            console.log(data[0]);
-            setMenu(data[0]);
-            const filteredMenuItemsByCategory = data[0].filter((item) => {
-                return item.category === selectedCategory;
+        const allItemsPromise = request
+            .post(baseUrlv2 + "/read-category", selectedCategory)
+            .then((res) => {
+                return res.json();
             });
-            setCurrentItems(filteredMenuItemsByCategory);
+        Promise.all([allItemsPromise]).then((data) => {
+            setMenu(data[0]);
+            setCurrentItems(data[0]);
             setRestaurants(dummyRestaurants);
         });
-    }, []);
-
-    // Update menu displayed when different category clicked
-    useEffect(() => {
-        const filteredMenuItemsByCategory = menu.filter((item) => {
-            return item.category === selectedCategory;
-        });
-        setCurrentItems(filteredMenuItemsByCategory);
     }, [selectedCategory]);
-
-    // Read in other tables for restaurants, customers and orders on first load only
-    // useEffect(() => {
-    //     const request = new Request();
-    //     const restaurantPromise = request.get(baseUrl + "/restaurants");
-    //     // const customerPromise = request.get(baseUrl + "/customers");
-    //     // const orderPromise = request.get(baseUrl + "/orders");
-
-    //     Promise.all([restaurantPromise, customerPromise, orderPromise]).then(
-    //         (data) => {
-    //             // setRestaurants(data[1]);
-    //             // setMenu(data[1][0].menu);
-    //             // setTables(data[1][0].tables);
-    //             // setAllCustomers(data[2]);
-    //             // setAllOrders(data[3]);
-    //         }
-    //     );
-    // }, []); // was [selectedCategory]
 
     if (!currentItems) {
         return <p>nothing</p>;
@@ -104,7 +74,6 @@ const MainContainer = () => {
     const handleSelectedItemAdd = (item) => {
         // Update contents of the basket
         // Add a quantity field to the object and append by 1 if already exist and > 0
-        // console.log("ITEM QTY: ", item.quantity + 1);
         if (item.quantity > 0) {
             item.quantity += 1;
         } else {
@@ -155,12 +124,10 @@ const MainContainer = () => {
     };
 
     const handleCustomerLogIn = () => {
-        // console.log("handle customer login triggered");
         setLoggedIn(true);
     };
 
     const handleAmdinLoginIn = () => {
-        // console.log("admin is logged in");
         setAdminLoggedIn(true);
     };
 
@@ -182,8 +149,6 @@ const MainContainer = () => {
         // console.log("PAYMENT");
     };
     // const handlePayment = (payment) => {
-    //     console.log("PAYMENT", payment);
-
     //     const request = new Request();
     //     request.post("/payments", payment)
     //     // .then(() => window.location = '/home')

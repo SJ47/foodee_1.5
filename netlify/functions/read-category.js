@@ -11,9 +11,7 @@ exports.handler = async function (event, context) {
     };
     try {
         // Get all items in the table
-        // const menu_items = await ddbDocumentClient.scan(params).promise()
         const menu_items = await ddbDocumentClient.query(params).promise()
-        // console.log(JSON.stringify(menu_items.Items));
         return {
             statusCode: 200,
             headers: { "Content-Type": "application/json" },

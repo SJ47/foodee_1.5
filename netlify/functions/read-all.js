@@ -2,8 +2,7 @@ const ddbDocumentClient = require("./config")
 
 exports.handler = async function (event, context) {
     const params = {
-        // TableName: "foodee-menu_items",
-        TableName: "foodee_local",
+        TableName: "foodee",
     };
 
     try {
