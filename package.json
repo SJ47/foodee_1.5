@@ -10,7 +10,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.52.0",
-    "aws-sdk": "^2.1338.0",
+    "aws-sdk": "^2.1353.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-leaflet": "^4.2.1",
